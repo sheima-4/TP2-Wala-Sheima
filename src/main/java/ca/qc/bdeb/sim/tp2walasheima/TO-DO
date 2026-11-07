@@ -1,3 +1,44 @@
 TO-DO:
 [] Créer le dossier et l'ajouter sur GitHub en collaboration
-[]
+[] Création des classes de bases
+[] Initialiser le canvas
+[] Ajouter les fichiers jpg (assets)
+
+[] Écran d'accueil
+    [] Mettre les assets (fond #2A7FFF, logo jeu, titre, bouton jouer, bouton infos)
+    [] Initialiser les différentes scene
+        [] Scene accueil
+        [] Scene Jouer
+        [] Scene Infos
+    [] events bouton jouer et bouton infos
+    [] Quand Esc, ferme le programme
+
+[] Gontrand
+    [] Modélisé par rectangle WIDTH = 102px et HEIGHT = 90px
+    [] Immobile : gontrand.png
+    [] Avance : gontrand-avant.png
+    [] Blessé : gontrand-outch.png
+    [] Peut bouger dans 4 directions avec flèches
+        [] ATTENTION il peut pas reculer plus loin que la caméra
+        [] Les flèches modifient l'accélération (+1000px/s^2)
+        [] Si aucune touche appuyée, accélération en sens inverse (pour ralentir) jusqu'à vitesse = 0px/s
+        [] Vitesse max = 300px/s
+    [] Doit pas dépasser les côtés de la fenêtre
+
+[] Antagonistes
+    [] Apparaissent par la droite
+    [] Position initiale y : random entre 1/5 et 4/5 de la hauteur
+    [] Poisson crée : random entre poisson1.png à poisson5.png
+    [] hauteur des images : random entre 50px et 120px
+    [] largeur des images : calculées automatiquement to keep proportions
+    [] Modélisés par des rectangles
+    [] Vitesse horizontale initiale des poissons: vitesse = 100*(numeroNiveau^0.33) + 200 px/s
+    [] Vitesse verticale : random entre 0 et 100px/s, random vers le bas ou vers le haut
+    [] accélération taux de 500px/s^2
+    [] Collision avec Gontrand:
+        [] Gontrand perd une vie
+        [] image gontrand-outch.png pour 2 secondes
+        [] clignote (0.25s visible, 0.25 invisible, etc...)
+        [] Pendant qu'il clignote, temporairement invincible, cant take any more damage
+
+
