@@ -4,7 +4,7 @@ TO-DO:
 [X] Initialiser le canvas
 [] Ajouter les fichiers jpg (assets)
 
-[] Écran d'accueil
+[] Écran d'accueil - Sheima
     [] Mettre les assets (fond #2A7FFF, logo jeu, titre, bouton jouer, bouton infos)
     [] Initialiser les différentes scene
         [] Scene accueil
@@ -13,7 +13,7 @@ TO-DO:
     [] events bouton jouer et bouton infos
     [] Quand Esc, ferme le programme
 
-[] Gontrand
+[] Gontrand - Wala
     [] Modélisé par rectangle WIDTH = 102px et HEIGHT = 90px
     [] Immobile : gontrand.png
     [] Avance : gontrand-avant.png
@@ -25,7 +25,7 @@ TO-DO:
         [] Vitesse max = 300px/s
     [] Doit pas dépasser les côtés de la fenêtre
 
-[] Antagonistes
+[] Antagonistes - Sheima
     [] Apparaissent par la droite
     [] Position initiale y : random entre 1/5 et 4/5 de la hauteur
     [] Poisson crée : random entre poisson1.png à poisson5.png
