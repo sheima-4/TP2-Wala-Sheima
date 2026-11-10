@@ -5,9 +5,9 @@ TO-DO:
 [] Ajouter les fichiers jpg (assets)
 
 [] Écran d'accueil - Sheima
-    [] Mettre les assets (fond #2A7FFF, logo jeu, titre, bouton jouer, bouton infos)
+    [X] Mettre les assets (fond #2A7FFF, logo jeu, titre, bouton jouer, bouton infos)
     [] Initialiser les différentes scene
-        [] Scene accueil
+        [X] Scene accueil
         [] Scene Jouer
         [] Scene Infos
     [] events bouton jouer et bouton infos
