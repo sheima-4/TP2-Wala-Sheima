@@ -1,16 +1,14 @@
 package ca.qc.bdeb.sim.tp2walasheima;
 
-import javafx.application.Application;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
+import javafx.application.*;
+import javafx.event.*;
+import javafx.geometry.*;
 import javafx.scene.Scene;
-import javafx.scene.canvas.Canvas;
-import javafx.scene.control.Button;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
+import javafx.scene.canvas.*;
+import javafx.scene.control.*;
+import javafx.scene.image.*;
+import javafx.scene.input.KeyCode;
+import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -38,8 +36,8 @@ public class JeuPoisson extends Application {
 
         var hbox = new HBox();
         hbox.setAlignment(Pos.BOTTOM_CENTER);
-        hbox.setSpacing(10);// Fait l'espace entre les deux bouttons
-        hbox.setPadding(new Insets(10));// Fait l'espace entre les bouttons et le bottom du BorderPane
+        hbox.setSpacing(10);// Fait l'espace entre les deux boutons
+        hbox.setPadding(new Insets(10));// Fait l'espace entre les boutons et le bottom du BorderPane
 
         var buttonJouer = new Button("Jouer!");// doit mener a scene du jeu
         var buttonInfos = new Button("Infos");// doit mener a scene info
@@ -59,5 +57,13 @@ public class JeuPoisson extends Application {
         stage.setTitle("Gontrand le Flétant");
         stage.setScene(scene);
         stage.show();
+    }
+
+    //méthode event si utilisatrice clique sur bouton ESC
+    public void escape(KeyCode code){
+        if (code == KeyCode.ESCAPE)
+            Platform.exit();
+        else
+            Input.setKeyPressed(code, true);
     }
 }

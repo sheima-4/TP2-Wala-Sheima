@@ -2,7 +2,7 @@ TO-DO:
 [X] Créer le dossier et l'ajouter sur GitHub en collaboration
 [X] Création des classes de bases
 [X] Initialiser le canvas
-[] Ajouter les fichiers jpg (assets)
+[X] Ajouter les fichiers jpg (assets)
 
 [] Écran d'accueil - Sheima
     [X] Mettre les assets (fond #2A7FFF, logo jeu, titre, bouton jouer, bouton infos)
@@ -14,7 +14,7 @@ TO-DO:
     [] Quand Esc, ferme le programme
 
 [] Gontrand - Wala
-    [] Modélisé par rectangle WIDTH = 102px et HEIGHT = 90px
+    [X] Modélisé par rectangle WIDTH = 102px et HEIGHT = 90px
     [] Immobile : gontrand.png
     [] Avance : gontrand-avant.png
     [] Blessé : gontrand-outch.png
