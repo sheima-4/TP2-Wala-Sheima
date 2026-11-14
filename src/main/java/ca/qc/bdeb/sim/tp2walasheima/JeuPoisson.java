@@ -107,7 +107,7 @@ public class JeuPoisson extends Application {
 
 
         Text explicatif = new Text("Travail remis à Nicolas Hurtuboise et Raouf Barbari. " +
-                "Grahismes adaptés de https://game-icons.net/ et de https://openclipart.org/. " +
+                "Graphismes adaptés de https://game-icons.net/ et de https://openclipart.org/. " +
                 "Développé dans le cadre du cours 420-SF3-RE - Développement d'applications dans un environnement graphique, " +
                 "au Collège Bois-de-Boulogne. ");
         explicatif.setWrappingWidth(800);// texte revient à la ligne

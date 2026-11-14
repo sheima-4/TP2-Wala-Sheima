@@ -4,14 +4,14 @@ TO-DO:
 [X] Initialiser le canvas
 [X] Ajouter les fichiers jpg (assets)
 
-[] Écran d'accueil - Sheima
+[X] Écran d'accueil - Sheima
     [X] Mettre les assets (fond #2A7FFF, logo jeu, titre, bouton jouer, bouton infos)
-    [pas fini] Initialiser les différentes scene
+    [x] Initialiser les différentes scene
         [X] Scene accueil
-        [] Scene Jouer
-        [] Scene Infos
-    [] events bouton jouer et bouton infos
-    [] Quand Esc, ferme le programme
+        [X] Scene Jouer
+        [x] Scene Infos
+    [x] events bouton jouer et bouton infos
+    [x] Quand Esc, ferme le programme
 
 [] Gontrand - Wala
     [X] Modélisé par rectangle WIDTH = 102px et HEIGHT = 90px
