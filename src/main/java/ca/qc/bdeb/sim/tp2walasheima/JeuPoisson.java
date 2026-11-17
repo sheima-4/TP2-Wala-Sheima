@@ -62,13 +62,6 @@ public class JeuPoisson extends Application {
             }
         });
 
-        //canvas quand scene = ecranJeu
-
-        //initialisation personnage
-        var Gontrand = new PoissonGentil(new Point2D(100, 45));
-        //Gontrand.draw();
-
-
         stage.getIcons().add(new Image("gontrand.png"));
         stage.setTitle("Gontrand le Flétant");
         stage.setScene(scene);
@@ -145,6 +138,12 @@ public class JeuPoisson extends Application {
                 ecranAcceuil(stage);
             }
         });
+
+        var context = canvas.getGraphicsContext2D();
+
+        //initialisation du personnage
+        var Gontrand = new PoissonGentil(new Point2D(100, 45));
+        Gontrand.draw(context);
 
         stage.setScene(scene);
         stage.show();
