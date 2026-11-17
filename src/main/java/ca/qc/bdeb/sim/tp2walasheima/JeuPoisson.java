@@ -3,6 +3,7 @@ package ca.qc.bdeb.sim.tp2walasheima;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.geometry.Insets;
+import javafx.geometry.Point2D;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
@@ -60,6 +61,12 @@ public class JeuPoisson extends Application {
                 Platform.exit();
             }
         });
+
+        //canvas quand scene = ecranJeu
+
+        //initialisation personnage
+        var Gontrand = new PoissonGentil(new Point2D(100, 45));
+        //Gontrand.draw();
 
 
         stage.getIcons().add(new Image("gontrand.png"));
