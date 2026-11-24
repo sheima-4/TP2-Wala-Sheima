@@ -14,8 +14,8 @@ public class Partie {
         gontrand = new PoissonGentil(new Point2D(100, 45));
     }
 
-    public void update(double deltaTemps, KeyCode code){
-            gontrand.update(deltaTemps, code);
+    public void update(double deltaTemps){
+            gontrand.update(deltaTemps);
     }
 
     public void draw(GraphicsContext context){

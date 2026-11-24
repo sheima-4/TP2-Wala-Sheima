@@ -3,7 +3,6 @@ package ca.qc.bdeb.sim.tp2walasheima;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.application.Platform;
-import javafx.event.*;
 import javafx.geometry.*;
 import javafx.scene.Scene;
 import javafx.scene.canvas.*;
@@ -137,6 +136,7 @@ public class JeuPoisson extends Application {
 
         var context = canvas.getGraphicsContext2D();
 
+        Partie partie = new Partie();
 
         //mouvements
         AnimationTimer timer = new AnimationTimer() {
@@ -146,8 +146,9 @@ public class JeuPoisson extends Application {
             public void handle(long time) {
                 double deltaTemps = (time - dernierTime)*1e-9;
 
+                partie.draw(context);
                 scene.setOnKeyPressed(e ->
-                        jsp(deltaTemps, context, e.getCode())
+                        jsp(deltaTemps,context, e.getCode(), partie)
                 );
 
                 dernierTime = time;
@@ -169,10 +170,14 @@ public class JeuPoisson extends Application {
         ecranAcceuil(stage);
     }
 
-    public void jsp(double deltaTemps, GraphicsContext context, KeyCode code){
-        Partie partie = new Partie();
-        partie.update(deltaTemps, code);
+    public void jsp(double deltaTemps, GraphicsContext context, KeyCode code, Partie partie){
+        toucheAppuyee(code);
+        partie.update(deltaTemps);
         partie.draw(context);
+    }
+
+    public void toucheAppuyee(KeyCode code){
+        Input.setKeyPressed(code, true);
     }
 
     /*

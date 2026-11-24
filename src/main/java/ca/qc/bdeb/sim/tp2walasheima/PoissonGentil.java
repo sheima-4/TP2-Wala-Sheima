@@ -30,7 +30,7 @@ public class PoissonGentil extends ElementsJeu{
     }
 
 
-        public void update (double deltaTemps, KeyCode code){
+        public void update (double deltaTemps){
 
             boolean haut = Input.isKeyPressed(KeyCode.UP);
             boolean bas = Input.isKeyPressed(KeyCode.DOWN);
