@@ -3,6 +3,7 @@ package ca.qc.bdeb.sim.tp2walasheima;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.application.Platform;
+import javafx.event.*;
 import javafx.geometry.*;
 import javafx.scene.Scene;
 import javafx.scene.canvas.*;
@@ -136,25 +137,20 @@ public class JeuPoisson extends Application {
 
         var context = canvas.getGraphicsContext2D();
 
-        //initialisation du personnage
-        var Gontrand = new PoissonGentil(new Point2D(100, 45));
-        Gontrand.draw(context);
+        Partie partie = new Partie();
 
         //mouvements
         AnimationTimer timer = new AnimationTimer() {
-            private double x1 = Gontrand.getPosition().getX();
-            private double y1 = Gontrand.getPosition().getY();
-
             private long dernierTime = System.nanoTime();
 
             @Override
             public void handle(long time) {
                 double deltaTemps = (time - dernierTime)*1e-9;
 
-                Gontrand.update(deltaTemps, x1, y1);
+                partie.update(deltaTemps);
+                partie.draw(context);
 
-                context.clearRect(0,0, WIDTH, HEIGHT);
-                Gontrand.draw(context);
+                dernierTime = time;
             }
         };
         timer.start();
@@ -172,4 +168,15 @@ public class JeuPoisson extends Application {
 
         ecranAcceuil(stage);
     }
+
 }
+
+/*méthode event si utilisatrice clique sur bouton ESC
+    public void escape(KeyCode code){
+        if (code == KeyCode.ESCAPE)
+            Platform.exit();
+        else
+            Input.setKeyPressed(code, true);
+    }
+
+     */

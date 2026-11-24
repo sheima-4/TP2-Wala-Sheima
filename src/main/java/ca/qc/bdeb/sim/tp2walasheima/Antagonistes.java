@@ -1,6 +1,7 @@
 package ca.qc.bdeb.sim.tp2walasheima;
 
 import javafx.geometry.Point2D;
+import javafx.scene.canvas.GraphicsContext;
 
 public class Antagonistes extends ElementsJeu{
     final static int WIDTH = 120;
@@ -11,10 +12,15 @@ public class Antagonistes extends ElementsJeu{
     private Point2D taille;
 
     public Antagonistes(Point2D position, Point2D vitesse, Point2D acceleration, Point2D taille) {// a modifier
-        this.position = position;
+        super(position);
         this.vitesse = vitesse;
         this.acceleration = acceleration;
         this.taille = taille;
+    }
+
+    @Override
+    public void draw(GraphicsContext context) {
+
     }
 
     //boucle pour personnage reviens constamment

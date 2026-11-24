@@ -15,6 +15,8 @@ public class PoissonGentil extends ElementsJeu{
         gontrand = new ImageView("gontrand.png");
         taille = new Point2D(WIDTH, HEIGHT);
         gontrand.setPreserveRatio(true);
+        velocite = VELOCITE_INITIALE;
+        acceleration = ACCELERATION_INITIALE;
     }
 
     public Point2D getPosition(){ return position; }
@@ -25,28 +27,36 @@ public class PoissonGentil extends ElementsJeu{
         context.drawImage(gontrand.getImage(), position.getX(), position.getY());
     }
 
-    public void update(double deltaTemps, double x1, double y1){
-        boolean haut = Input.isKeyPressed(KeyCode.UP);
-        boolean bas = Input.isKeyPressed(KeyCode.DOWN);
-        boolean droite = Input.isKeyPressed(KeyCode.RIGHT);
-        boolean gauche = Input.isKeyPressed(KeyCode.LEFT);
 
-        if(haut)
-            velocite = new Point2D(velocite.getX(), 1000);
-        else if(bas)
-            velocite = new Point2D(velocite.getX(), -1000);
-        else if(droite)
-            velocite = new Point2D(1000, velocite.getY());
-        else if (gauche)
-            velocite = new Point2D(-1000, velocite.getY());
-        else
-            velocite = new Point2D(0, 0);
+        public void update ( double deltaTemps){ //keycode?
+            boolean haut = Input.isKeyPressed(KeyCode.UP);
+            boolean bas = Input.isKeyPressed(KeyCode.DOWN);
+            boolean droite = Input.isKeyPressed(KeyCode.RIGHT);
+            boolean gauche = Input.isKeyPressed(KeyCode.LEFT);
 
-        acceleration = new Point2D(velocite.getX()/deltaTemps, velocite.getY()/deltaTemps);
+            if (haut)
+                acceleration = new Point2D(acceleration.getX(), 1000);
+            else if (bas)
+                acceleration = new Point2D(acceleration.getX(), -1000);
+            else if (droite)
+                acceleration = new Point2D(1000, acceleration.getY());
+            else if (gauche)
+                acceleration = new Point2D(-1000, acceleration.getY());
+            else if (Math.abs(velocite.getX()) > 0.5 || Math.abs(velocite.getY()) > 0.5) {
+                // ralentir si la vitesse est un minimum élevée
+                int signeX = velocite.getX() > 0 ? -1 : +1;
+                int signeY = velocite.getY() > 0 ? -1 : +1;
+                acceleration = new Point2D(signeX * 500, signeY * 500);
+            } else {
+                velocite = new Point2D(0, 0);
+                acceleration = new Point2D(0, 0);
+            }
 
-        //positions finales après le update en x et y
-        double x2 = x1 + velocite.getX()*deltaTemps + acceleration.getX()*1/2*Math.pow(deltaTemps, 2);
-        double y2 = y1 + velocite.getY()*deltaTemps + acceleration.getY()*1/2*Math.pow(deltaTemps, 2);
-        position = new Point2D(x2, y2);
-    }
+            //peux pas aller plus vite de +-300 m/s
+            velocite = new Point2D(Math.clamp(velocite.getX(), -300, 300),
+                    Math.clamp(velocite.getY(), -300, 300));
+
+            updatePhysique(deltaTemps);
+        }
+
 }
