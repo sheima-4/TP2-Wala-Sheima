@@ -24,7 +24,7 @@ public class JeuPoisson extends Application {
         var scene = new Scene(rootAcceuil, WIDTH, HEIGHT);
         rootAcceuil.setStyle("-fx-background-color: #2A7FFF");
 
-        //Scene: Écran d'accueil-> Vbox ensuite Hbox(bouton)
+        //Scene: Écran d'accueil -> Vbox ensuite Hbox(bouton)
         VBox vbox = new VBox();
         vbox.setAlignment(Pos.TOP_CENTER);
 

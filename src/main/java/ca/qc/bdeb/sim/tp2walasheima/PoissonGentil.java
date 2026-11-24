@@ -9,17 +9,12 @@ public class PoissonGentil extends ElementsJeu{
     final static int WIDTH = 102;
     final static int HEIGHT = 90;
     private ImageView gontrand;
-    private Point2D position;
-    private Point2D taille;
-    private Point2D velocite;
-    private Point2D acceleration;
 
     public PoissonGentil(Point2D position){
-        this.position = position;
+        super(position);
         gontrand = new ImageView("gontrand.png");
         taille = new Point2D(WIDTH, HEIGHT);
         gontrand.setPreserveRatio(true);
-        velocite = new Point2D(0,0); //vitesse initiale est nulle.
     }
 
     public Point2D getPosition(){ return position; }
