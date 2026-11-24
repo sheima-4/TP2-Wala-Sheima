@@ -137,7 +137,6 @@ public class JeuPoisson extends Application {
 
         var context = canvas.getGraphicsContext2D();
 
-        Partie partie = new Partie();
 
         //mouvements
         AnimationTimer timer = new AnimationTimer() {
@@ -147,8 +146,9 @@ public class JeuPoisson extends Application {
             public void handle(long time) {
                 double deltaTemps = (time - dernierTime)*1e-9;
 
-                partie.update(deltaTemps);
-                partie.draw(context);
+                scene.setOnKeyPressed(e ->
+                        jsp(deltaTemps, context, e.getCode())
+                );
 
                 dernierTime = time;
             }
@@ -169,6 +169,20 @@ public class JeuPoisson extends Application {
         ecranAcceuil(stage);
     }
 
+    public void jsp(double deltaTemps, GraphicsContext context, KeyCode code){
+        Partie partie = new Partie();
+        partie.update(deltaTemps, code);
+        partie.draw(context);
+    }
+
+    /*
+    public String getNomToucheAppuyee(KeyCode code){
+       return code.getName();
+    }
+     */
+
+    //JSP COMMENT but i should find a way to get which key was pressed so I can use it
+    //for the update() method.
 }
 
 /*méthode event si utilisatrice clique sur bouton ESC

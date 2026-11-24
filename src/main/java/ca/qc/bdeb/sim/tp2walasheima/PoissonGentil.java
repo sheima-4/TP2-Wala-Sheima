@@ -5,6 +5,8 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 
+import java.security.Key;
+
 public class PoissonGentil extends ElementsJeu{
     final static int WIDTH = 102;
     final static int HEIGHT = 90;
@@ -28,7 +30,8 @@ public class PoissonGentil extends ElementsJeu{
     }
 
 
-        public void update ( double deltaTemps){ //keycode?
+        public void update (double deltaTemps, KeyCode code){
+
             boolean haut = Input.isKeyPressed(KeyCode.UP);
             boolean bas = Input.isKeyPressed(KeyCode.DOWN);
             boolean droite = Input.isKeyPressed(KeyCode.RIGHT);
