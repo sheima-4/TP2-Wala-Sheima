@@ -52,11 +52,8 @@ public class JeuPoisson extends Application {
         // evenement ramene a ecraninfos
         buttonInfos.setOnAction(e -> { ecranInfos(stage); });
         buttonJouer.setOnAction(e -> { ecranJeu(stage); });
-        scene.setOnKeyPressed(e-> {
-            if(e.getCode() == KeyCode.ESCAPE){//ferme programme quand touche esc appuyé
-                Platform.exit();
-            }
-        });
+        //ferme programme quand touche esc appuyé
+        toucheAppuyee(scene);
 
         stage.getIcons().add(new Image("gontrand.png"));
         stage.setTitle("Gontrand le Flétant");
@@ -138,9 +135,7 @@ public class JeuPoisson extends Application {
 
         Partie partie = new Partie();
 
-        scene.setOnKeyPressed(e ->
-                jsp( e.getCode())
-        );
+        toucheAppuyee(scene);
 
         //mouvements
         AnimationTimer timer = new AnimationTimer() {
@@ -174,14 +169,22 @@ public class JeuPoisson extends Application {
         ecranAcceuil(stage);
     }
 
-    public void jsp( KeyCode code){
-        toucheAppuyee(code);
 
-    }
+    public void toucheAppuyee(Scene scene){
 
-    public void toucheAppuyee(KeyCode code){
-        Input.setKeyPressed(code, true);
-        //add if keyreleased false
+        //QUESTION POUR PROF: dans diapo ils ont mis plus que 2 lignes dans le event
+        //ecq c'est correct si c'est déjà dans une méthode à l'extérieur du start?
+        //pcq je vais quand même pas faire deux méthodes juste pour ça non?
+        scene.setOnKeyPressed((e) -> {
+                if(e.getCode() == KeyCode.ESCAPE)
+                    Platform.exit();
+                else
+                    Input.setKeyPressed(e.getCode(), true);
+        });
+
+        scene.setOnKeyReleased((e) -> {
+            Input.setKeyPressed(e.getCode(), false);
+        });
     }
 
     /*

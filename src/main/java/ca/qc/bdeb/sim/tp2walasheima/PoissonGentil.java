@@ -42,9 +42,9 @@ public class PoissonGentil extends ElementsJeu{
                 Math.clamp(velocite.getY(), -300, 300));
 
         if (haut)
-            acceleration = new Point2D(acceleration.getX(), 1000);
-        else if (bas)
             acceleration = new Point2D(acceleration.getX(), -1000);
+        else if (bas)
+            acceleration = new Point2D(acceleration.getX(), 1000);
         else if (droite)
             acceleration = new Point2D(1000, acceleration.getY());
         else if (gauche)
