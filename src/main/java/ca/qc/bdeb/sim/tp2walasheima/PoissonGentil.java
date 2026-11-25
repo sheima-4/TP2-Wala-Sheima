@@ -30,36 +30,36 @@ public class PoissonGentil extends ElementsJeu{
     }
 
 
-        public void update (double deltaTemps){
+    public void update (double deltaTemps){
 
-            boolean haut = Input.isKeyPressed(KeyCode.UP);
-            boolean bas = Input.isKeyPressed(KeyCode.DOWN);
-            boolean droite = Input.isKeyPressed(KeyCode.RIGHT);
-            boolean gauche = Input.isKeyPressed(KeyCode.LEFT);
+        boolean haut = Input.isKeyPressed(KeyCode.UP);
+        boolean bas = Input.isKeyPressed(KeyCode.DOWN);
+        boolean droite = Input.isKeyPressed(KeyCode.RIGHT);
+        boolean gauche = Input.isKeyPressed(KeyCode.LEFT);
 
-            if (haut)
-                acceleration = new Point2D(acceleration.getX(), 1000);
-            else if (bas)
-                acceleration = new Point2D(acceleration.getX(), -1000);
-            else if (droite)
-                acceleration = new Point2D(1000, acceleration.getY());
-            else if (gauche)
-                acceleration = new Point2D(-1000, acceleration.getY());
-            else if (Math.abs(velocite.getX()) > 0.5 || Math.abs(velocite.getY()) > 0.5) {
-                // ralentir si la vitesse est un minimum élevée
-                int signeX = velocite.getX() > 0 ? -1 : +1;
-                int signeY = velocite.getY() > 0 ? -1 : +1;
-                acceleration = new Point2D(signeX * 500, signeY * 500);
-            } else {
-                velocite = new Point2D(0, 0);
-                acceleration = new Point2D(0, 0);
-            }
+        //peux pas aller plus vite de +-300 m/s
+        velocite = new Point2D(Math.clamp(velocite.getX(), -300, 300),
+                Math.clamp(velocite.getY(), -300, 300));
 
-            //peux pas aller plus vite de +-300 m/s
-            velocite = new Point2D(Math.clamp(velocite.getX(), -300, 300),
-                    Math.clamp(velocite.getY(), -300, 300));
-
-            updatePhysique(deltaTemps);
+        if (haut)
+            acceleration = new Point2D(acceleration.getX(), 1000);
+        else if (bas)
+            acceleration = new Point2D(acceleration.getX(), -1000);
+        else if (droite)
+            acceleration = new Point2D(1000, acceleration.getY());
+        else if (gauche)
+            acceleration = new Point2D(-1000, acceleration.getY());
+        else if (Math.abs(velocite.getX()) > 0.5 || Math.abs(velocite.getY()) > 0.5) {
+            // ralentir si la vitesse est un minimum élevée
+            int signeX = velocite.getX() > 0 ? -1 : +1;
+            int signeY = velocite.getY() > 0 ? -1 : +1;
+            acceleration = new Point2D(signeX * 500, signeY * 500);
+        } else {
+            velocite = new Point2D(0, 0);
+            acceleration = new Point2D(0, 0);
         }
+
+        updatePhysique(deltaTemps);
+    }
 
 }
