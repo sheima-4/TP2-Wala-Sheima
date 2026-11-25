@@ -15,29 +15,36 @@ public class Antagonistes extends ElementsJeu{
     Image image;
     Random r = new Random();
 
-    public Antagonistes(Point2D position, Image image) {
+    public Antagonistes(Point2D position, Image image, double numeroNiveau) {
         super(position);
-        this.velocite = velocite;
-        this.taille = taille;
-        this.image = image;
-        this.acceleration = new Point2D(-500,0);//accélération vers la gauche
-
-
         double y = (0.2 + r.nextDouble() * (0.8 - 0.2) )*HEIGHT;//position aléatoire en y entre 1/5 et 4/5 inclus
+        position = new Point2D(WIDTH,y);// commence par la droite
+
+        int numeroPoisson = r.nextInt(5);
+        image = new Image("poisson" + numeroPoisson+ ".png");
 
         double tailleX= (50 + r.nextDouble()) * (HEIGHT - 50);//hauteur
         double tailleY= (tailleX * WIDTH) / HEIGHT;//largeur dépend de la hauteur pour que ce soit proportionnelle
+        taille = new Point2D(tailleX, tailleY);
 
-        //double velociteX= - (100 * Math.pow(numeroNiveau,0.33) +200 ); UMMM numeornIVEAU est en rouge alors j'ai mis en commentaire pour l'instant
-        //Vitesse verticale : random entre 0 et 100px/s, random vers le bas ou vers le haut
+        double velociteX= - (100 * Math.pow(numeroNiveau,0.33) +200 );
+        double velociteY= r.nextDouble(1,101);
+//vers le bas et vers le haut je pense avec boolean ou random jsp
 
-
-        int numeroPoisson = r.nextInt(5);
-        image = new Image("poisson" + numeroPoisson+ ".png");// huhhhh
-
-
+        acceleration = new Point2D(-500,0);//accélération vers la gauche
 
     }
+
+    public void update(double deltaTemps){
+        updatePhysique(deltaTemps);
+
+    }
+
+    /*public boolean poissonSortEcran(){
+        return getDroite();
+    }*
+
+     */
 
     @Override
     public void draw(GraphicsContext context) {
