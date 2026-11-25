@@ -31,9 +31,9 @@ TO-DO:
     [x] Poisson crée : random entre poisson1.png à poisson5.png
     [x] hauteur des images : random entre 50px et 120px
     [x] largeur des images : calculées automatiquement to keep proportions
-    [] Modélisés par des rectangles
+    [X] Modélisés par des rectangles
     [x] Vitesse horizontale initiale des poissons: vitesse = 100*(numeroNiveau^0.33) + 200 px/s
-    [/] Vitesse verticale : random entre 0 et 100px/s, random vers le bas ou vers le haut
+    [X] Vitesse verticale : random entre 0 et 100px/s, random vers le bas ou vers le haut
     [X] accélération taux de 500px/s^2
     [] Collision avec Gontrand:
         [] Gontrand perd une vie
