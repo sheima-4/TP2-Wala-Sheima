@@ -106,7 +106,7 @@ public class JeuPoisson extends Application {
                 "Graphismes adaptés de https://game-icons.net/ et de https://openclipart.org/. " +
                 "Développé dans le cadre du cours 420-SF3-RE - Développement d'applications dans un environnement graphique, " +
                 "au Collège Bois-de-Boulogne. ");
-        explicatif.setWrappingWidth(800);// texte revient à la ligne
+        explicatif.setWrappingWidth(700);// texte revient à la ligne
         explicatif.setStyle("-fx-font-size: 16px");
 
         var buttonRetour = new Button("Retour");
