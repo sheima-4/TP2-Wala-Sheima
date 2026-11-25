@@ -138,6 +138,10 @@ public class JeuPoisson extends Application {
 
         Partie partie = new Partie();
 
+        scene.setOnKeyPressed(e ->
+                jsp( e.getCode())
+        );
+
         //mouvements
         AnimationTimer timer = new AnimationTimer() {
             private long dernierTime = System.nanoTime();
@@ -145,11 +149,11 @@ public class JeuPoisson extends Application {
             @Override
             public void handle(long time) {
                 double deltaTemps = (time - dernierTime)*1e-9;
+                partie.update(deltaTemps);
 
                 partie.draw(context);
-                scene.setOnKeyPressed(e ->
-                        jsp(deltaTemps,context, e.getCode(), partie)
-                );
+                partie.draw(context);
+
 
                 dernierTime = time;
             }
@@ -170,14 +174,14 @@ public class JeuPoisson extends Application {
         ecranAcceuil(stage);
     }
 
-    public void jsp(double deltaTemps, GraphicsContext context, KeyCode code, Partie partie){
+    public void jsp( KeyCode code){
         toucheAppuyee(code);
-        partie.update(deltaTemps);
-        partie.draw(context);
+
     }
 
     public void toucheAppuyee(KeyCode code){
         Input.setKeyPressed(code, true);
+        //add if keyreleased false
     }
 
     /*
