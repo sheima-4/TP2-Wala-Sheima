@@ -2,11 +2,8 @@ package ca.qc.bdeb.sim.tp2walasheima;
 
 import javafx.geometry.*;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.input.KeyCode;
-
 import java.util.ArrayList;
 import java.util.Random;
-
 import static ca.qc.bdeb.sim.tp2walasheima.JeuPoisson.HEIGHT;
 import static ca.qc.bdeb.sim.tp2walasheima.JeuPoisson.WIDTH;
 
@@ -16,7 +13,7 @@ public class Partie {
 
     int numeroNiveau = 1;
     double nSeconde;
-    double temps=0;
+    double temps=0;// temps qui va s'écouler
 
 
     Random r = new Random();//pour 1 a 5 poisson appararait au hasard
