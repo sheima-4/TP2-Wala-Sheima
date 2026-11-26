@@ -23,7 +23,7 @@ public class Partie {
         int nombreAntagonistes = r.nextInt(1,6);
 
         for(int i = 0; i < nombreAntagonistes; i++){
-            poissonsAntagonistes.add(new Antagonistes(new Point2D(JeuPoisson.WIDTH,0),numeroNiveau));//bruhh
+           poissonsAntagonistes.add(new Antagonistes(new Point2D(JeuPoisson.WIDTH,0),numeroNiveau));//bruhh
         }
     }
 
@@ -53,6 +53,7 @@ public class Partie {
                 poissonsAntagonistes.remove(i);
                 i--;// nouvelle élèlment va être vérifier
             }
+
         }
     }
 

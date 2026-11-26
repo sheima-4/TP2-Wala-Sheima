@@ -40,5 +40,13 @@ TO-DO:
         [] image gontrand-outch.png pour 2 secondes
         [] clignote (0.25s visible, 0.25 invisible, etc...)
         [] Pendant qu'il clignote, temporairement invincible, cant take any more damage
-
-
+[]Caméra
+    []G. arrive a 1/5 de largeur ecran JeuPoisson alors camere avance directement
+    []G. recule camera ne recule pas
+    []G. pas revenir avant ce que cam peut voir
+    []afficher niveau pour 4 secondes
+    ---> G.arrive touche droite nouveau niveau, affiche nouveau niveau
+    []largeur total niveau 8 fois largeur fenetre--> Cam peut pas s'aaficher plus loin que niveau
+    []G. arrive proche de droite niveau alors cam ARRETE de le suivre pour que G. touche droite et nouveau niveau commence
+    []voir les figure 2,3 et 4 pour détailsd
+    []voir débogage du jeu
