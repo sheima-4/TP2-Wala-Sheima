@@ -15,21 +15,26 @@ public class Antagonistes extends ElementsJeu{
     Random r = new Random();
 
     public Antagonistes(Point2D position, double numeroNiveau) {
-        super(position);
-        double y = (0.2 + r.nextDouble() * (0.8 - 0.2) )*JeuPoisson.HEIGHT;//position aléatoire en y entre 1/5 et 4/5 inclus
-        position = new Point2D(JeuPoisson.WIDTH,y);// commence par la droite
+
+        //position aléatoire en y entre 1/5 et 4/5 inclus et commence par la droite
+        super(new Point2D(JeuPoisson.WIDTH,(0.2 + Math.random() * (0.8 - 0.2) )*JeuPoisson.HEIGHT));// Math.random car c'est une méthode statique qui peut être utilisé dans un super
 
         int numeroPoisson = r.nextInt(1,6);
         image = new Image("poisson" + numeroPoisson+ ".png");
 
-        double tailleX= 50 +( r.nextDouble() * (WIDTH - 50));//hauteur
-        double tailleY= (tailleX * WIDTH) / HEIGHT;//largeur dépend de la hauteur pour que ce soit proportionnelle
-        taille = new Point2D(tailleX, tailleY);
+        //hauteur
+        double tailleY= 50 +( r.nextDouble() * (WIDTH - 50));
+
+        //largeur dépend de la hauteur pour que ce soit proportionnelle
+        double tailleX= (tailleY * WIDTH) / HEIGHT;
+
+        taille = new Point2D(tailleY, tailleX);
 
         double velociteX=- (100 * Math.pow(numeroNiveau,0.33) +200 );
         double velociteY=r.nextDouble(1,101);
 
-        if(r.nextBoolean()==true){//détermine si le poisson va vers le haut ou vers le bas dépendemment du signe de la vitesse en y
+        //détermine si le poisson va vers le haut ou vers le bas dépendemment du signe de la vitesse en y
+        if(r.nextBoolean()==true){
             velociteY= velociteY;//vitesse en y reste positif
         } else {
             velociteY= -velociteY;// vitesse en y est négatif
@@ -37,7 +42,8 @@ public class Antagonistes extends ElementsJeu{
 
         velocite = new Point2D(velociteX, velociteY);
 
-        acceleration = new Point2D(-500,0);//accélération vers la gauche
+        //accélération vers la gauche
+        acceleration = new Point2D(-500,0);
 
     }
 
