@@ -153,7 +153,7 @@ public class JeuPoisson extends Application {
                 double deltaTemps = (time - dernierTime) * 1e-9;
                 partie.update(deltaTemps);
 
-                partie.draw(context);
+                //partie.draw(context);
                 partie.draw(context);
 
                 dernierTime = time;

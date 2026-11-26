@@ -43,8 +43,16 @@ public class Partie {
             temps = 0;
         }
 
+        //Supprime les antagonistes quand ils ne sont plus sur l'écran
         for (int i=0;i< poissonsAntagonistes.size(); i++){
-            poissonsAntagonistes.get(i).update(deltaTemps);
+            Antagonistes anta =  poissonsAntagonistes.get(i);
+
+            anta.update(deltaTemps);
+
+            if(anta.antagonisteSortEcran()){
+                poissonsAntagonistes.remove(i);
+                i--;// nouvelle élèlment va être vérifier
+            }
         }
     }
 

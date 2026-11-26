@@ -28,7 +28,7 @@ public class Antagonistes extends ElementsJeu{
         //largeur dépend de la hauteur pour que ce soit proportionnelle
         double tailleX= (tailleY * WIDTH) / HEIGHT;
 
-        taille = new Point2D(tailleY, tailleX);
+        taille = new Point2D(tailleX, tailleY);
 
         double velociteX=- (100 * Math.pow(numeroNiveau,0.33) +200 );
         double velociteY=r.nextDouble(1,101);
@@ -47,6 +47,9 @@ public class Antagonistes extends ElementsJeu{
 
     }
 
+    public boolean antagonisteSortEcran(){
+        return getDroite()<0;
+    }
 
     public void update(double deltaTemps){
 
