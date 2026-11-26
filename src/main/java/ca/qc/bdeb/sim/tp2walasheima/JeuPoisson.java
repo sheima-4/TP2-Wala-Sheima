@@ -19,7 +19,7 @@ public class JeuPoisson extends Application {
     final static int WIDTH = 900;
     final static int HEIGHT = 520;
 
-    private void ecranAcceuil(Stage stage){
+    private void ecranAcceuil(Stage stage) {
         var rootAcceuil = new BorderPane();
         var scene = new Scene(rootAcceuil, WIDTH, HEIGHT);
         rootAcceuil.setStyle("-fx-background-color: #2A7FFF");
@@ -50,8 +50,13 @@ public class JeuPoisson extends Application {
         rootAcceuil.setBottom(hbox);
 
         // evenement ramene a ecraninfos
-        buttonInfos.setOnAction(e -> { ecranInfos(stage); });
-        buttonJouer.setOnAction(e -> { ecranJeu(stage); });
+        buttonInfos.setOnAction(e -> {
+            ecranInfos(stage);
+        });
+        buttonJouer.setOnAction(e -> {
+            ecranJeu(stage);
+        });
+
         //ferme programme quand touche esc appuyé
         toucheAppuyee(scene);
 
@@ -61,7 +66,7 @@ public class JeuPoisson extends Application {
         stage.show();
     }
 
-    private void ecranInfos(Stage stage){
+    private void ecranInfos(Stage stage) {
         //Scene: Écran Infos
 
         var rootInfos = new BorderPane();
@@ -108,17 +113,19 @@ public class JeuPoisson extends Application {
 
         var buttonRetour = new Button("Retour");
 
-        infos.getChildren().addAll(titreJeux, poissonEnnemi,textMembre1, textMembre2 , explicatif, buttonRetour);
+        infos.getChildren().addAll(titreJeux, poissonEnnemi, textMembre1, textMembre2, explicatif, buttonRetour);
         rootInfos.setCenter(infos);
 
         // evenement retour a ecran acceuil
-        buttonRetour.setOnAction(e -> { ecranAcceuil(stage); });
+        buttonRetour.setOnAction(e -> {
+            ecranAcceuil(stage);
+        });
 
         stage.setScene(scene);
         stage.show();
     }
 
-    private void ecranJeu(Stage stage){
+    private void ecranJeu(Stage stage) {
         var canvas = new Canvas(WIDTH, HEIGHT);
         var rootJeu = new BorderPane();
         var scene = new Scene(rootJeu, WIDTH, HEIGHT);
@@ -126,8 +133,8 @@ public class JeuPoisson extends Application {
         rootJeu.setCenter(canvas);
         rootJeu.setStyle("-fx-background-color: #2A7FFF");
 
-        scene.setOnKeyPressed(e-> {// evenement touche espace retour ecran acceuil
-            if(e.getCode() == KeyCode.SPACE)
+        scene.setOnKeyPressed(e -> {// evenement touche espace retour ecran acceuil
+            if (e.getCode() == KeyCode.SPACE)
                 ecranAcceuil(stage);
         });
 
@@ -143,12 +150,11 @@ public class JeuPoisson extends Application {
 
             @Override
             public void handle(long time) {
-                double deltaTemps = (time - dernierTime)*1e-9;
+                double deltaTemps = (time - dernierTime) * 1e-9;
                 partie.update(deltaTemps);
 
                 partie.draw(context);
                 partie.draw(context);
-
 
                 dernierTime = time;
             }
@@ -170,16 +176,16 @@ public class JeuPoisson extends Application {
     }
 
 
-    public void toucheAppuyee(Scene scene){
+    public void toucheAppuyee(Scene scene) {
 
         //QUESTION POUR PROF: dans diapo ils ont mis plus que 2 lignes dans le event
         //ecq c'est correct si c'est déjà dans une méthode à l'extérieur du start?
         //pcq je vais quand même pas faire deux méthodes juste pour ça non?
         scene.setOnKeyPressed((e) -> {
-                if(e.getCode() == KeyCode.ESCAPE)
-                    Platform.exit();
-                else
-                    Input.setKeyPressed(e.getCode(), true);
+            if (e.getCode() == KeyCode.ESCAPE)
+                Platform.exit();
+            else
+                Input.setKeyPressed(e.getCode(), true);
         });
 
         scene.setOnKeyReleased((e) -> {
@@ -187,22 +193,4 @@ public class JeuPoisson extends Application {
         });
     }
 
-    /*
-    public String getNomToucheAppuyee(KeyCode code){
-       return code.getName();
-    }
-     */
-
-    //JSP COMMENT but i should find a way to get which key was pressed so I can use it
-    //for the update() method.
 }
-
-/*méthode event si utilisatrice clique sur bouton ESC
-    public void escape(KeyCode code){
-        if (code == KeyCode.ESCAPE)
-            Platform.exit();
-        else
-            Input.setKeyPressed(code, true);
-    }
-
-     */
