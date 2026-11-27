@@ -12,6 +12,5 @@ public class Projectiles extends ElementsJeu{
 
     @Override
     public void draw(GraphicsContext context) {
-
     }
 }

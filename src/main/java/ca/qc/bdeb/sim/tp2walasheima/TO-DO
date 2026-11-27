@@ -17,13 +17,20 @@ TO-DO:
     [X] Modélisé par rectangle WIDTH = 102px et HEIGHT = 90px
     [] Immobile : gontrand.png
     [] Avance : gontrand-avant.png
-    [] Blessé : gontrand-outch.png
-    [] Peut bouger dans 4 directions avec flèches
+    [X] Blessé : gontrand-outch.png
+    [X] Peut bouger dans 4 directions avec flèches
         [] ATTENTION il peut pas reculer plus loin que la caméra
-        [] Les flèches modifient l'accélération (+1000px/s^2)
-        [] Si aucune touche appuyée, accélération en sens inverse (pour ralentir) jusqu'à vitesse = 0px/s
-        [] Vitesse max = 300px/s
-    [] Doit pas dépasser les côtés de la fenêtre
+        [X] Les flèches modifient l'accélération (+1000px/s^2)
+        [X] Si aucune touche appuyée, accélération en sens inverse (pour ralentir) jusqu'à vitesse = 0px/s
+        [X] Vitesse max = 300px/s
+    [X] Doit pas dépasser les côtés de la fenêtre
+    [] Collision avec Gontrand:Wala va faire ca
+            [] Gontrand perd une vie
+            [] image gontrand-outch.png pour 2 secondes
+            [] clignote (0.25s visible, 0.25 invisible, etc...)
+            [] Pendant qu'il clignote, temporairement invincible, cant take any more damage --> boolean enCollisionAvec == false
+    [] Système de vie !!
+
 
 [] Antagonistes - Sheima
     [X] Apparaissent par la droite
@@ -35,11 +42,8 @@ TO-DO:
     [x] Vitesse horizontale initiale des poissons: vitesse = 100*(numeroNiveau^0.33) + 200 px/s
     [X] Vitesse verticale : random entre 0 et 100px/s, random vers le bas ou vers le haut
     [X] accélération taux de 500px/s^2
-    [] Collision avec Gontrand:Wala va faire ca
-        [] Gontrand perd une vie
-        [] image gontrand-outch.png pour 2 secondes
-        [] clignote (0.25s visible, 0.25 invisible, etc...)
-        [] Pendant qu'il clignote, temporairement invincible, cant take any more damage
+
+
 []Caméra
     []G. arrive a 1/5 de largeur ecran JeuPoisson alors camere avance directement
     []G. recule camera ne recule pas
@@ -50,3 +54,19 @@ TO-DO:
     []G. arrive proche de droite niveau alors cam ARRETE de le suivre pour que G. touche droite et nouveau niveau commence
     []voir les figure 2,3 et 4 pour détailsd
     []voir débogage du jeu
+
+[] Projectiles
+    [] lancés quand utilisateur clique sur SPACE.
+    [] proviennent du centre de Gontrand.
+    [] Quand projectile touche un antagoniste, ce dernier disparaît mais le projectile continue.
+    [] Quand projectile sort de l'écran, on le retire du jeu.
+    [] Gontrand peut lancer max 1 projectile/0.5s. Si on essaie d'appuyer sur Espace plus rapidement que ça, il ne se passe rien
+    [] Commence avec des étoiles de mer.
+    [] Change de projectile quand il touche un Baril. New Projectile = Random
+    [] Quand Gontrand passe au prochain niveau, il conserve son projectile
+
+[] Baril
+    [] Largeur de 70px, hauteur 83px, baril.png.
+    [] Quand Gontrand touche le baril, baril-ouvert.png.
+    [] Position x du baril est choisie au hasard au début de chaque niveau, horizontalement entre 1/5 et 4/5
+    []
