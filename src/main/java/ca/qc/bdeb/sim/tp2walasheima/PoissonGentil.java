@@ -52,7 +52,7 @@ public class PoissonGentil extends ElementsJeu{
             acceleration = new Point2D(1000, acceleration.getY());
         else if (gauche)
             acceleration = new Point2D(-1000, acceleration.getY());
-        else if (Math.abs(velocite.getX()) > 0.5 || Math.abs(velocite.getY()) > 0.5) {
+        else if (Math.abs(velocite.getX()) > 0 || Math.abs(velocite.getY()) > 0) {
             // ralentir si la vitesse est un minimum élevée
             int signeX = velocite.getX() > 0 ? -1 : +1;
             int signeY = velocite.getY() > 0 ? -1 : +1;
@@ -66,13 +66,11 @@ public class PoissonGentil extends ElementsJeu{
 
         gontrandSort();
 
-        if(velocite.equals(0)){
-            gontrand = new ImageView("gontrand.png");
-        }else{
+        if(Math.abs(velocite.magnitude()) != 0){
             gontrand = new ImageView("gontrand-avant.png");
+        } else {
+            gontrand = new ImageView("gontrand.png");
         }
-
-
     }
 
     //pour éviter que Gontrand sort de l'écran
@@ -105,17 +103,9 @@ public class PoissonGentil extends ElementsJeu{
     }
 
     public void testCollision(Antagonistes anta){
-        if (this.enCollisionAvec(anta)){
-            gontrand = new ImageView("gontrand-outch.png");
-            /*long dernierTime = System.nanoTime();
-            long time = 0;
-
-            double deltaTemps = (time - dernierTime) * 1e-9;
-            while(deltaTemps <= 2){
-
-            }
-             */
-        }
+       if(this.enCollisionAvec(anta)){
+           gontrand = new ImageView("gontrand-outch.png");
+       }
     }
 
     /*
@@ -130,6 +120,15 @@ public class PoissonGentil extends ElementsJeu{
         }
 
     }
-     */
+    */
+
+    /*long dernierTime = System.nanoTime();
+         long time = 0;
+
+         double deltaTemps = (time - dernierTime) * 1e-9;
+          while(deltaTemps <= 2){
+
+      }
+    */
 
 }

@@ -178,14 +178,9 @@ public class JeuPoisson extends Application {
 
     public void toucheAppuyee(Scene scene) {
 
-        //QUESTION POUR PROF: dans diapo ils ont mis plus que 2 lignes dans le event
-        //ecq c'est correct si c'est déjà dans une méthode à l'extérieur du start?
-        //pcq je vais quand même pas faire deux méthodes juste pour ça non?
         scene.setOnKeyPressed((e) -> {
-            if (e.getCode() == KeyCode.ESCAPE)
-                Platform.exit();
-            else
-                Input.setKeyPressed(e.getCode(), true);
+            if (e.getCode() == KeyCode.ESCAPE) { Platform.exit();}
+            else { Input.setKeyPressed(e.getCode(), true); }
         });
 
         scene.setOnKeyReleased((e) -> {
