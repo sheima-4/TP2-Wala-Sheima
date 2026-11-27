@@ -21,7 +21,7 @@ public class Antagonistes extends ElementsJeu{
         //position aléatoire en y entre 1/5 et 4/5 inclus et commence par la droite
         super(new Point2D(JeuPoisson.WIDTH,(0.2 + Math.random() * (0.8 - 0.2) )*JeuPoisson.HEIGHT));// Math.random car c'est une méthode statique qui peut être utilisé dans un super
 
-        int numeroPoisson = r.nextInt(1,5);
+        int numeroPoisson = r.nextInt(1,4);
         image = new Image("poisson" + numeroPoisson+ ".png");
 
         //hauteur
