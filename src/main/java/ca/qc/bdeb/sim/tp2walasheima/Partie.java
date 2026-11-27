@@ -56,6 +56,10 @@ public class Partie {
             }
 
         }
+
+        for(Antagonistes anta : poissonsAntagonistes){
+            gontrand.testCollision(anta);
+        }
     }
 
     public void draw(GraphicsContext context){

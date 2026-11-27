@@ -10,6 +10,8 @@ public class Antagonistes extends ElementsJeu{
 
     final static int WIDTH = 120;
     final static int HEIGHT = 104;
+    private double rayonX = WIDTH/2;
+    private double rayonY = HEIGHT/2;
 
     Image image;
     Random r = new Random();
@@ -63,5 +65,7 @@ public class Antagonistes extends ElementsJeu{
         context.drawImage(image, position.getX(),position.getY(),taille.getX(),taille.getY());
 
     }
+
+    public double getRayonX(){ return rayonX; }
 
 }

@@ -71,8 +71,11 @@ public class PoissonGentil extends ElementsJeu{
         }else{
             gontrand = new ImageView("gontrand-avant.png");
         }
+
+
     }
 
+    //pour éviter que Gontrand sort de l'écran
     public boolean gontrandSort(){
         boolean sort = false;
         if(getBas() >= JeuPoisson.HEIGHT) {
@@ -91,5 +94,42 @@ public class PoissonGentil extends ElementsJeu{
 
         return sort;
     }
+
+    public boolean enCollisionAvec(Antagonistes anta){
+        var difference = position.subtract(anta.position);
+
+        double distanceCarre = difference.dotProduct(difference);
+        double sommeRayons =  this.rayonX + anta.getRayonX();
+
+        return distanceCarre < sommeRayons * sommeRayons;
+    }
+
+    public void testCollision(Antagonistes anta){
+        if (this.enCollisionAvec(anta)){
+            gontrand = new ImageView("gontrand-outch.png");
+            /*long dernierTime = System.nanoTime();
+            long time = 0;
+
+            double deltaTemps = (time - dernierTime) * 1e-9;
+            while(deltaTemps <= 2){
+
+            }
+             */
+        }
+    }
+
+    /*
+    public void clignote(double deltaTemps){
+        double temps = 0;
+        while (temps < deltaTemps){
+            gontrand.setOpacity(1);
+            gontrand = new ImageView("gontrand-avant.png");
+            temps += 0.25;
+            gontrand = new ImageView("gontrand-outch.png");
+            gontrand.setOpacity(0.5);
+        }
+
+    }
+     */
 
 }
