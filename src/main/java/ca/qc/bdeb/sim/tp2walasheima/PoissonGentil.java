@@ -12,15 +12,15 @@ import java.security.Key;
 public class PoissonGentil extends ElementsJeu{
     final static double WIDTH = 102;
     final static double HEIGHT = 90;
-    private ImageView gontrand;
+    private Image gontrandI;
     private double rayonX = WIDTH/2;
     private double rayonY = HEIGHT/2;
 
     public PoissonGentil(Point2D position){
         super(position);
-        gontrand = new ImageView("gontrand.png");
+        gontrandI = new Image("gontrand.png");
         taille = new Point2D(WIDTH, HEIGHT);
-        gontrand.setPreserveRatio(true);
+        gontrandI.isPreserveRatio();
         velocite = VELOCITE_INITIALE;
         acceleration = ACCELERATION_INITIALE;
     }
@@ -30,7 +30,7 @@ public class PoissonGentil extends ElementsJeu{
     public Point2D getTaille(){ return taille; }
 
     public void draw(GraphicsContext context){
-        context.drawImage(gontrand.getImage(), position.getX(), position.getY());
+        context.drawImage(gontrandI, position.getX(), position.getY());
     }
 
 
@@ -67,9 +67,9 @@ public class PoissonGentil extends ElementsJeu{
         gontrandSort();
 
         if(Math.abs(velocite.magnitude()) != 0){
-            gontrand = new ImageView("gontrand-avant.png");
+            gontrandI = new Image("gontrand-avant.png");
         } else {
-            gontrand = new ImageView("gontrand.png");
+            gontrandI = new Image("gontrand.png");
         }
     }
 
@@ -93,12 +93,10 @@ public class PoissonGentil extends ElementsJeu{
         return sort;
     }
 
-    public void testCollision(Antagonistes anta){
-        if(this.enCollisionAvec(anta)){
-            gontrand = new ImageView("gontrand-outch.png");
-        }
+    public Image gontrandMal(){
+        gontrandI = new Image("gontrand-outch.png");
+        return gontrandI;
     }
-
     /*
     public void clignote(double deltaTemps){
         double temps = 0;

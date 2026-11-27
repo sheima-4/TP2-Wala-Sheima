@@ -3,6 +3,7 @@ package ca.qc.bdeb.sim.tp2walasheima;
 import javafx.geometry.*;
 import javafx.scene.Scene;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 import java.util.ArrayList;
@@ -58,7 +59,7 @@ public class Partie {
         }
 
         for(Antagonistes anta : poissonsAntagonistes){
-            gontrand.testCollision(anta);
+            testCollision(gontrand, anta);
         }
     }
 
@@ -69,5 +70,20 @@ public class Partie {
         for (int i = 0; i< poissonsAntagonistes.size(); i++){
             poissonsAntagonistes.get(i).draw(context);
         }
+    }
+
+    public void testCollision(PoissonGentil pG, Antagonistes anta){
+        if(enCollision(pG, anta)){
+            gontrand.gontrandMal();
+        }
+    }
+
+    public boolean enCollision(ElementsJeu eJ1, ElementsJeu eJ2){
+        var difference = eJ1.position.subtract(eJ2.position);
+
+        double distanceCarre = difference.dotProduct(difference);
+        double sommeRayons = eJ1.rayonX + eJ2.rayonX;
+
+        return distanceCarre < sommeRayons * sommeRayons;
     }
 }
