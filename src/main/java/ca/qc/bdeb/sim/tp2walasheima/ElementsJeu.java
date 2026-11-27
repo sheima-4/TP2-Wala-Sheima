@@ -6,6 +6,8 @@ import javafx.scene.canvas.GraphicsContext;
 public abstract class ElementsJeu {
     public static final Point2D VELOCITE_INITIALE = new Point2D(0,0);
     public static final Point2D ACCELERATION_INITIALE = new Point2D(0,0);
+    protected double HEIGHT;
+    protected double WIDTH;
 
     //positions
     protected Point2D position;
@@ -48,4 +50,21 @@ public abstract class ElementsJeu {
         return position.add(taille.multiply(1/2.0));
     }
 
+    //get les mesures des objets
+    public double getHeight(){
+        return HEIGHT;
+    }
+
+    public double getWidth(){
+        return WIDTH;
+    }
+
+    public boolean enCollisionAvec(ElementsJeu eJ){
+        var difference = position.subtract(eJ.position);
+
+        double distanceCarre = difference.dotProduct(difference);
+        double sommeRayons = this.WIDTH/2 + eJ.WIDTH/2;
+
+        return distanceCarre < sommeRayons * sommeRayons;
+    }
 }

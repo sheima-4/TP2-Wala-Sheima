@@ -10,8 +10,8 @@ import javafx.scene.input.KeyCode;
 import java.security.Key;
 
 public class PoissonGentil extends ElementsJeu{
-    final static int WIDTH = 102;
-    final static int HEIGHT = 90;
+    final static double WIDTH = 102;
+    final static double HEIGHT = 90;
     private ImageView gontrand;
     private double rayonX = WIDTH/2;
     private double rayonY = HEIGHT/2;
@@ -93,21 +93,10 @@ public class PoissonGentil extends ElementsJeu{
         return sort;
     }
 
-    //lowk je pense je pourrais mettre celle-là aussi dans ElementsJeu avec ElementsJeu eJ au lieu de Antagonistes anta
-    public boolean enCollisionAvec(Antagonistes anta){
-        var difference = position.subtract(anta.position);
-
-        double distanceCarre = difference.dotProduct(difference);
-        double sommeRayons =  this.rayonX + anta.getRayonX();
-
-        return distanceCarre < sommeRayons * sommeRayons;
-    }
-
-    //mettre celle-là en classe abstraite dans ElementsJeu
     public void testCollision(Antagonistes anta){
-       if(this.enCollisionAvec(anta)){
-           gontrand = new ImageView("gontrand-outch.png");
-       }
+        if(this.enCollisionAvec(anta)){
+            gontrand = new ImageView("gontrand-outch.png");
+        }
     }
 
     /*
