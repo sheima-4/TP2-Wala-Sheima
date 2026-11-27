@@ -1,6 +1,7 @@
 package ca.qc.bdeb.sim.tp2walasheima;
 
 import javafx.geometry.Point2D;
+import javafx.scene.Scene;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -12,6 +13,8 @@ public class PoissonGentil extends ElementsJeu{
     final static int WIDTH = 102;
     final static int HEIGHT = 90;
     private ImageView gontrand;
+    private double rayonX = WIDTH/2;
+    private double rayonY = HEIGHT/2;
 
     public PoissonGentil(Point2D position){
         super(position);
@@ -32,7 +35,6 @@ public class PoissonGentil extends ElementsJeu{
 
 
     public void update (double deltaTemps){
-
         boolean haut = Input.isKeyPressed(KeyCode.UP);
         boolean bas = Input.isKeyPressed(KeyCode.DOWN);
         boolean droite = Input.isKeyPressed(KeyCode.RIGHT);
@@ -61,7 +63,33 @@ public class PoissonGentil extends ElementsJeu{
         }
 
         updatePhysique(deltaTemps);
+
+        gontrandSort();
+
+        if(velocite.equals(0)){
+            gontrand = new ImageView("gontrand.png");
+        }else{
+            gontrand = new ImageView("gontrand-avant.png");
+        }
     }
 
+    public boolean gontrandSort(){
+        boolean sort = false;
+        if(getBas() >= JeuPoisson.HEIGHT) {
+            sort = true;
+            velocite = new Point2D(30, -30);
+        } else if(getHaut() <= 0) {
+            sort = true;
+            velocite = new Point2D(30, +30);
+        } else if(getDroite() >= JeuPoisson.WIDTH) {
+            sort = true;
+            velocite = new Point2D(-30, 30);
+        } else if(getGauche() <= 0) {
+            sort = true;
+            velocite = new Point2D(+30, 30);
+        }
+
+        return sort;
+    }
 
 }

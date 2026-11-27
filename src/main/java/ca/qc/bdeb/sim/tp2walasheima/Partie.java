@@ -3,6 +3,8 @@ package ca.qc.bdeb.sim.tp2walasheima;
 import javafx.geometry.*;
 import javafx.scene.Scene;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.image.ImageView;
+
 import java.util.ArrayList;
 import java.util.Random;
 import static ca.qc.bdeb.sim.tp2walasheima.JeuPoisson.HEIGHT;
@@ -35,7 +37,6 @@ public class Partie {
 
     public void update(double deltaTemps){
         gontrand.update(deltaTemps);
-        //limiteMouvements(gontrand, scene);
 
         temps += deltaTemps;
         if(temps >= nSeconde){
@@ -51,7 +52,7 @@ public class Partie {
 
             if(anta.antagonisteSortEcran()){
                 poissonsAntagonistes.remove(i);
-                i--;// nouvelle élèlment va être vérifier
+                i--;// nouvelle élément va être vérifier
             }
 
         }
@@ -65,13 +66,4 @@ public class Partie {
             poissonsAntagonistes.get(i).draw(context);
         }
     }
-
-    /*
-    s'assure que l'élément ne sort pas de la scène
-    public void limiteMouvements(ElementsJeu eJ, Scene scene){
-        if (eJ.getBas() >= scene.getHeight()){
-            eJ.position = new Point2D(eJ.getGauche(), eJ.getHaut());
-        }
-    }
-     */
 }
