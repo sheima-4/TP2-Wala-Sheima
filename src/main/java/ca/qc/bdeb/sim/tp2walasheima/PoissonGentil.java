@@ -93,6 +93,7 @@ public class PoissonGentil extends ElementsJeu{
         return sort;
     }
 
+    //lowk je pense je pourrais mettre celle-là aussi dans ElementsJeu avec ElementsJeu eJ au lieu de Antagonistes anta
     public boolean enCollisionAvec(Antagonistes anta){
         var difference = position.subtract(anta.position);
 
@@ -102,6 +103,7 @@ public class PoissonGentil extends ElementsJeu{
         return distanceCarre < sommeRayons * sommeRayons;
     }
 
+    //mettre celle-là en classe abstraite dans ElementsJeu
     public void testCollision(Antagonistes anta){
        if(this.enCollisionAvec(anta)){
            gontrand = new ImageView("gontrand-outch.png");
